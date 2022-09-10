@@ -1,4 +1,5 @@
 const { response } = require("express");
+const nodemailer = require("nodemailer")
 /**
  *
  * @param {*} message
@@ -41,3 +42,38 @@ exports.failResponse = (message, payload = null) => {
 exports.RandomNumber = (digit, limit) => {
   return Math.floor(Math.random() * digit + limit);
 };
+
+
+exports.mailTransporter = async () => {
+    return await nodemailer.createTransport({
+        host: process.env.MAIL_HOST,
+        port: process.env.MAIL_PORT,
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: process.env.MAIL_USERNAME, // generated ethereal user
+            pass: process.env.MAIL_PASSWORD // generated ethereal password
+        }
+    })
+}
+
+exports.notifyEmail = async (
+    emailText,
+    emailSubject,
+    data,
+) => {
+  let transporter = await this.mailTransporter()
+    try {
+            await transporter.sendMail({
+                from: `<${process.env.MAIL_FROM_ADDRESS}>`,
+                to: data.email,
+                subject: emailSubject,
+                html: emailText
+            })
+            return true
+        } catch (e) {
+            return false
+        }
+   
+}
+
+

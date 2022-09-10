@@ -1,9 +1,24 @@
-const DimensionController = require("../controllers/dimension.controller");
+const UserController = require("../controllers/usersController");
+const productController = require("../controllers/productController");
 
 module.exports = function (app, validators) {
-  app.post(
-    "/",
-    validators.dimensionValidator,
-    DimensionController.calculateDimension
+  app.get(
+    "/products",
+    productController.allProducts
   );
+
+  app.post(
+    "/email",
+    validators.userProductValidator,
+    productController.store
+  );
+
+  app.patch(
+    "/product/edit/:id",
+    validators.productValidator,
+    productController.updateProduct
+  );
+
+  
+
 };

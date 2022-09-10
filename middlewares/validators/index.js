@@ -1,5 +1,9 @@
-const dimensionValidator = require("./dimensionValidator.validations");
+const userValidator = require("./userValidator.validations");
+const userProductValidator = require("./userProductValidator.validations");
+const productValidator = require("./productValidator.validations");
 
 module.exports = {
-  ...dimensionValidator,
+  ...userValidator,
+  ...userProductValidator,
+  ...productValidator,
 };

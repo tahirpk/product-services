@@ -1,43 +1,15 @@
-## Task for package items weight calculations( W x H x L) (microservice accessed through a REST API )
+## API for Dummy Ecom Product-Services API
 
 ## Download Code
 
 After download the code run these commands:
 
 1. npm install
-2. npm start
-3. url in postman (request method post): http://localhost:3000/
-   json body request:
-   ```
-   {"items":[
-        {
-            "width": 10,
-            "height": 10,
-            "length": 10
-        },
-        {
-            "width": 11,
-            "height": 11,
-            "length": 11
-        },
-        {
-            "width": 12,
-            "height": 13,
-            "length": 14
-        }
-    ]}
-   ```
-4. Success Response :
-```
-{
-    "status": true,
-    "message": "Package Items Dimensions W X H X L.",
-    "package": {
-        "data": {
-            "Width": 2,
-            "Height": 4,
-            "Length": 1
-        }
-    }
-}
-```
+2. To run the project update the Port in .env and  ``` npm start ```
+3. After DB setup then run the migration : ``` npx sequelize-cli db:migrate --env=development ```
+4. Also run the seeder for dummy data: ``` npx sequelize-cli db:seed:all ```
+ 
+
+5. APIs Postman collection Link:
+
+#  https://www.getpostman.com/collections/e76e45b45fc7f50eb305

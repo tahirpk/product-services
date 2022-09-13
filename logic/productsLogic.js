@@ -85,6 +85,19 @@ productsLogic.createUserProduct = async (req, res) => {
 
    
 }
+//
+
+productsLogic.getProductById = async (req, res) => {
+    
+    
+    let productData = Product.findOne({
+        where: {
+            id: req.params.id
+        }
+    }) 
+    
+    return (productData)?productData:false
+}
 
  productsLogic.updateProduct = async (req, res) => { 
      let request = req.body

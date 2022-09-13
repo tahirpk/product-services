@@ -8,7 +8,7 @@ module.exports = function (app, validators) {
   );
 
   app.post(
-    "/email",
+    "/user/email",
     validators.userProductValidator,
     productController.store
   );
@@ -17,6 +17,11 @@ module.exports = function (app, validators) {
     "/product/edit/:id",
     validators.productValidator,
     productController.updateProduct
+  );
+
+   app.get(
+    "/product/:id",
+    productController.getProductById
   );
 
   

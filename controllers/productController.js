@@ -75,4 +75,26 @@ productController.updateProduct = async (req, res) => {
 }
 
 
+/**
+ *
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
+productController.getProductById = async (req, res) => {
+    
+      let product = await productsLogic.getProductById(req, res)
+        if (product) {
+            return res.send({
+                data: methods.successResponse(
+                    "Product data ",
+                    product
+                    
+                )
+            })
+    }
+    
+     res.send({ data: methods.failResponse("No product", 404) })
+}
+
 module.exports = productController;
